@@ -684,8 +684,9 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:1
         <div class="nav-orb orb-anon" id="nav-orb">?</div>
         <span id="nav-user-text" style="font-size:11px;color:rgba(255,255,255,.5)">Não conectado</span>
       </div>
+      <button class="btn-back-reading" id="nav-back" onclick="goScreen(0)" style="display:none;background:none;border:none;color:rgba(255,255,255,.55);font-size:12px;font-weight:600;cursor:pointer;padding:6px 10px;border-radius:6px;transition:all .2s;white-space:nowrap;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.55)'">← Ler artigos</button>
       <button class="btn-header-signin" id="nav-signin" onclick="goScreen(1)">Entrar</button>
-      <button class="btn-receba" id="nav-cta" onclick="goScreen(1)">Receba news</button>
+      <button class="btn-header-cta" id="nav-cta" onclick="goScreen(1)">Criar conta grátis →</button>
     </div>
   </div>
 </header>
@@ -737,7 +738,8 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:1
 <!-- ══════════════════════════════════════════════════════ -->
 <!-- SCREEN 0 · HOME (leitor anônimo) -->
 <!-- ══════════════════════════════════════════════════════ -->
-<div class="screen active" id="screen-0">
+<div class="screen active" id="screen-0" style="background:#dde1e7;">
+<div id="screen-0-col" style="max-width:1040px;margin:0 auto;background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.07),0 4px 24px rgba(0,0,0,.05);">
 
   <!-- HERO -->
   <div class="hero">
@@ -801,7 +803,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:1
               <div class="dest-small-cat">Green Economy</div>
               <div class="dest-small-h">Net zero deixa de ser promessa e se consolida como regra entre grandes emissores</div>
               <div class="dest-small-by">
-                Ana Lima
+                <span onclick="viewAuthorKodeId('Ana Lima')" style="cursor:pointer;font-weight:600;border-bottom:1px dotted currentColor;">Ana Lima</span>
                 <span class="kode-badge kode-badge-gold" style="font-size:10px;padding:1px 6px;" onclick="showPopover(event,'BE-40008','Ana Lima','L4 · OPED','av-purple','AL',['V-04 Energia','V-11 ESG'],12,89,'Jan 2025')">BE-40008 ↗</span>
                 · 24 mai
               </div>
@@ -855,12 +857,308 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:1
       </div>
     </div>
   </div>
+
+  <!-- ══ SECTION: CATEGORIAS (topic stripe) ══ -->
+  <div style="background:#fff;border-top:3px solid var(--green);border-bottom:1px solid var(--border);padding:0 20px;">
+    <div style="max-width:960px;margin:0 auto;display:flex;gap:0;overflow-x:auto;">
+      <div style="flex-shrink:0;padding:12px 18px 12px 0;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--green);border-bottom:3px solid var(--green);margin-bottom:-1px;">Macroeconomia</div>
+      <div style="flex-shrink:0;padding:12px 18px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text-m);">Mercado Financeiro</div>
+      <div style="flex-shrink:0;padding:12px 18px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text-m);">Agronegócio</div>
+      <div style="flex-shrink:0;padding:12px 18px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text-m);">Câmbio & Juros</div>
+      <div style="flex-shrink:0;padding:12px 18px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text-m);">Comércio Exterior</div>
+      <div style="flex-shrink:0;padding:12px 18px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text-m);">ESG</div>
+      <div style="flex-shrink:0;padding:12px 18px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text-m);">Opinião</div>
+    </div>
+  </div>
+
+  <!-- ══ SECTION: MAIS RECENTES (2-col grid + sidebar) ══ -->
+  <div style="background:var(--bg);padding:32px 20px;">
+    <div style="max-width:960px;margin:0 auto;display:grid;grid-template-columns:1fr 300px;gap:32px;align-items:start;">
+
+      <!-- Left: article feed -->
+      <div>
+        <div class="section-label">Mais Recentes</div>
+
+        <!-- Article row 1 -->
+        <div style="display:flex;gap:16px;padding:18px 0;border-bottom:1px solid var(--border);align-items:flex-start;">
+          <img src="https://brazileconomy.com.br/wp-content/uploads/2026/05/agro.jpg" alt="" style="width:120px;height:82px;object-fit:cover;border-radius:6px;flex-shrink:0;">
+          <div style="flex:1;min-width:0;">
+            <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--blue);margin-bottom:5px;">Macroeconomia</div>
+            <div style="font-size:16px;font-weight:700;color:var(--navy);line-height:1.35;font-family:var(--serif);margin-bottom:7px;">Dívida Pública Brasileira: O Caminho para a Sustentabilidade Passa por Onde?</div>
+            <div style="font-size:12px;color:var(--text-l);display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+              <span onclick="viewAuthorKodeId('Ricardo Melo')" style="font-weight:600;color:var(--text-m);cursor:pointer;border-bottom:1px dotted var(--text-l);">Ricardo Melo</span>
+              <span>·</span><span>22 mai 2026</span><span>·</span><span>6 min</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Article row 2 -->
+        <div style="display:flex;gap:16px;padding:18px 0;border-bottom:1px solid var(--border);align-items:flex-start;">
+          <img src="https://brazileconomy.com.br/wp-content/uploads/2026/05/Azumi.jpg" alt="" style="width:120px;height:82px;object-fit:cover;border-radius:6px;flex-shrink:0;object-position:top;">
+          <div style="flex:1;min-width:0;">
+            <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--green);margin-bottom:5px;">Comércio Exterior</div>
+            <div style="font-size:16px;font-weight:700;color:var(--navy);line-height:1.35;font-family:var(--serif);margin-bottom:7px;">A Pressão nos Custos de Insumos e o Futuro das Exportações Brasileiras</div>
+            <div style="font-size:12px;color:var(--text-l);display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+              <span onclick="viewAuthorKodeId('Maria Santos')" style="font-weight:600;color:var(--text-m);cursor:pointer;border-bottom:1px dotted var(--text-l);">Maria Santos</span>
+              <span>·</span><span>20 mai 2026</span><span>·</span><span>5 min</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Article row 3 -->
+        <div style="display:flex;gap:16px;padding:18px 0;border-bottom:1px solid var(--border);align-items:flex-start;">
+          <img src="https://brazileconomy.com.br/wp-content/uploads/2026/04/karpas-800x533.jpg" alt="" style="width:120px;height:82px;object-fit:cover;border-radius:6px;flex-shrink:0;">
+          <div style="flex:1;min-width:0;">
+            <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--gold);margin-bottom:5px;">Câmbio & Juros</div>
+            <div style="font-size:16px;font-weight:700;color:var(--navy);line-height:1.35;font-family:var(--serif);margin-bottom:7px;">Inflação, Selic e o Equilíbrio Impossível Que o Governo Enfrenta no 3T</div>
+            <div style="font-size:12px;color:var(--text-l);display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+              <span onclick="viewAuthorKodeId('Jaqueline Mendes')" style="font-weight:600;color:var(--text-m);cursor:pointer;border-bottom:1px dotted var(--text-l);">Jaqueline Mendes</span>
+              <span>·</span><span>19 mai 2026</span><span>·</span><span>7 min</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Article row 4 -->
+        <div style="display:flex;gap:16px;padding:18px 0;border-bottom:1px solid var(--border);align-items:flex-start;">
+          <img src="https://brazileconomy.com.br/wp-content/uploads/2026/05/agro.jpg" alt="" style="width:120px;height:82px;object-fit:cover;border-radius:6px;flex-shrink:0;">
+          <div style="flex:1;min-width:0;">
+            <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--green);margin-bottom:5px;">ESG</div>
+            <div style="font-size:16px;font-weight:700;color:var(--navy);line-height:1.35;font-family:var(--serif);margin-bottom:7px;">Crédito de Carbono e o Agronegócio Brasileiro: Oportunidade ou Greenwashing?</div>
+            <div style="font-size:12px;color:var(--text-l);display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+              <span onclick="viewAuthorKodeId('Luísa Mendonça')" style="font-weight:600;color:var(--text-m);cursor:pointer;border-bottom:1px dotted var(--text-l);">Luísa Mendonça</span>
+              <span>·</span><span>18 mai 2026</span><span>·</span><span>5 min</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Article row 5 -->
+        <div style="display:flex;gap:16px;padding:18px 0;align-items:flex-start;">
+          <img src="https://brazileconomy.com.br/wp-content/uploads/2026/05/Azumi.jpg" alt="" style="width:120px;height:82px;object-fit:cover;border-radius:6px;flex-shrink:0;object-position:top;">
+          <div style="flex:1;min-width:0;">
+            <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--blue);margin-bottom:5px;">Mercado Financeiro</div>
+            <div style="font-size:16px;font-weight:700;color:var(--navy);line-height:1.35;font-family:var(--serif);margin-bottom:7px;">Fundos Multimercado em 2026: Os Gestores Que Estão Acertando e Por Quê</div>
+            <div style="font-size:12px;color:var(--text-l);display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+              <span onclick="viewAuthorKodeId('João Ferreira')" style="font-weight:600;color:var(--text-m);cursor:pointer;border-bottom:1px dotted var(--text-l);">João Ferreira</span>
+              <span>·</span><span>16 mai 2026</span><span>·</span><span>8 min</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: sidebar -->
+      <div style="display:flex;flex-direction:column;gap:24px;">
+
+        <!-- Mais lidos -->
+        <div style="background:#fff;border:1px solid var(--border);border-radius:10px;overflow:hidden;">
+          <div style="background:var(--navy);padding:12px 16px;">
+            <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.6);">Mais lidos</div>
+          </div>
+          <div style="padding:4px 0;">
+            <div style="display:flex;gap:12px;padding:12px 16px;border-bottom:1px solid var(--border);align-items:flex-start;">
+              <span style="font-size:22px;font-weight:900;color:var(--border-m);flex-shrink:0;line-height:1;width:24px;">1</span>
+              <div>
+                <div style="font-size:13px;font-weight:700;color:var(--navy);line-height:1.35;margin-bottom:3px;">Brasil e o Novo Superciclo de Commodities: O Que 2026 Reserva</div>
+                <div style="font-size:11px;color:var(--text-l);">412 👍 · Agronegócio</div>
+              </div>
+            </div>
+            <div style="display:flex;gap:12px;padding:12px 16px;border-bottom:1px solid var(--border);align-items:flex-start;">
+              <span style="font-size:22px;font-weight:900;color:var(--border-m);flex-shrink:0;line-height:1;width:24px;">2</span>
+              <div>
+                <div style="font-size:13px;font-weight:700;color:var(--navy);line-height:1.35;margin-bottom:3px;">B3 em 140.000: Rali ou Armadilha? O Caso para o Posicionamento Seletivo</div>
+                <div style="font-size:11px;color:var(--text-l);">341 👍 · Mercado Financeiro</div>
+              </div>
+            </div>
+            <div style="display:flex;gap:12px;padding:12px 16px;border-bottom:1px solid var(--border);align-items:flex-start;">
+              <span style="font-size:22px;font-weight:900;color:var(--border-m);flex-shrink:0;line-height:1;width:24px;">3</span>
+              <div>
+                <div style="font-size:13px;font-weight:700;color:var(--navy);line-height:1.35;margin-bottom:3px;">Arcabouço Fiscal e Contradições: Uma Agenda de Reformas Que o Governo Reluta em Adotar</div>
+                <div style="font-size:11px;color:var(--text-l);">289 👍 · Política Econômica</div>
+              </div>
+            </div>
+            <div style="display:flex;gap:12px;padding:12px 16px;align-items:flex-start;">
+              <span style="font-size:22px;font-weight:900;color:var(--border-m);flex-shrink:0;line-height:1;width:24px;">4</span>
+              <div>
+                <div style="font-size:13px;font-weight:700;color:var(--navy);line-height:1.35;margin-bottom:3px;">Inflação, Selic e o Equilíbrio Impossível Que o Governo Enfrenta no 3T</div>
+                <div style="font-size:11px;color:var(--text-l);">256 👍 · Macroeconomia</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Newsletter -->
+        <div style="background:linear-gradient(135deg,var(--navy) 0%,#1e3a5f 100%);border-radius:10px;padding:20px;">
+          <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--gold);margin-bottom:8px;">Newsletter</div>
+          <div style="font-size:15px;font-weight:700;color:#fff;line-height:1.3;margin-bottom:8px;">Análises direto na sua caixa toda manhã</div>
+          <div style="font-size:12px;color:rgba(255,255,255,.6);margin-bottom:16px;">Mais de 12.000 leitores recebem o briefing diário da BrazilEconomy</div>
+          <input type="email" placeholder="seu@email.com" style="width:100%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);border-radius:6px;padding:9px 12px;color:#fff;font-size:13px;outline:none;margin-bottom:9px;" onfocus="this.style.borderColor='rgba(255,255,255,.6)'" onblur="this.style.borderColor='rgba(255,255,255,.25)'" >
+          <button style="width:100%;background:var(--green);border:none;border-radius:6px;padding:9px;color:#fff;font-size:13px;font-weight:700;cursor:pointer;" onclick="showToast('✅ Inscrição realizada!')">Inscrever-se →</button>
+        </div>
+
+        <!-- Tags -->
+        <div style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:16px;">
+          <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--text-l);margin-bottom:12px;">Tópicos em destaque</div>
+          <div style="display:flex;flex-wrap:wrap;gap:7px;">
+            <span style="background:var(--green-dim);color:var(--green-deep);border-radius:20px;padding:4px 12px;font-size:12px;font-weight:600;">Selic</span>
+            <span style="background:#e8f0fb;color:var(--blue);border-radius:20px;padding:4px 12px;font-size:12px;font-weight:600;">B3</span>
+            <span style="background:var(--green-dim);color:var(--green-deep);border-radius:20px;padding:4px 12px;font-size:12px;font-weight:600;">Agro 2026</span>
+            <span style="background:var(--gold-dim);color:#7a5800;border-radius:20px;padding:4px 12px;font-size:12px;font-weight:600;">Câmbio</span>
+            <span style="background:#e8f0fb;color:var(--blue);border-radius:20px;padding:4px 12px;font-size:12px;font-weight:600;">Inflação</span>
+            <span style="background:var(--green-dim);color:var(--green-deep);border-radius:20px;padding:4px 12px;font-size:12px;font-weight:600;">ESG</span>
+            <span style="background:#f3eeff;color:#6b46c1;border-radius:20px;padding:4px 12px;font-size:12px;font-weight:600;">IPCA</span>
+            <span style="background:var(--gold-dim);color:#7a5800;border-radius:20px;padding:4px 12px;font-size:12px;font-weight:600;">Exportações</span>
+            <span style="background:#e8f0fb;color:var(--blue);border-radius:20px;padding:4px 12px;font-size:12px;font-weight:600;">Petrobras</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SECTION: OPINIÃO ══ -->
+  <div style="background:#fff;border-top:1px solid var(--border);padding:32px 20px;">
+    <div style="max-width:960px;margin:0 auto;">
+      <div class="section-label">Opinião & Análise</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
+
+        <div style="border:1px solid var(--border);border-radius:10px;overflow:hidden;">
+          <img src="https://brazileconomy.com.br/wp-content/uploads/2026/05/Azumi.jpg" alt="" style="width:100%;height:140px;object-fit:cover;object-position:top;">
+          <div style="padding:16px;">
+            <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:#805ad5;margin-bottom:7px;">OPED</div>
+            <div style="font-size:14px;font-weight:700;color:var(--navy);line-height:1.4;margin-bottom:10px;font-family:var(--serif);">Net Zero Deixa de Ser Promessa e se Consolida como Regra entre Grandes Emissores</div>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <img src="https://i.pravatar.cc/150?img=49" style="width:26px;height:26px;border-radius:50%;object-fit:cover;" alt="">
+              <span onclick="viewAuthorKodeId('Ana Lima')" style="font-size:12px;color:var(--text-m);font-weight:600;cursor:pointer;border-bottom:1px dotted var(--text-l);">Ana Lima</span>
+              <span style="font-size:11px;color:var(--text-l);">· 24 mai</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="border:1px solid var(--border);border-radius:10px;overflow:hidden;">
+          <img src="https://brazileconomy.com.br/wp-content/uploads/2026/04/karpas-800x533.jpg" alt="" style="width:100%;height:140px;object-fit:cover;">
+          <div style="padding:16px;">
+            <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--blue);margin-bottom:7px;">Macroeconomia</div>
+            <div style="font-size:14px;font-weight:700;color:var(--navy);line-height:1.4;margin-bottom:10px;font-family:var(--serif);">PIB 2026: Crescimento Real ou Ilusão Estatística? Os Dados Que o Governo Prefere Não Discutir</div>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <img src="https://i.pravatar.cc/150?img=40" style="width:26px;height:26px;border-radius:50%;object-fit:cover;" alt="">
+              <span onclick="viewAuthorKodeId('Jaqueline Mendes')" style="font-size:12px;color:var(--text-m);font-weight:600;cursor:pointer;border-bottom:1px dotted var(--text-l);">Jaqueline Mendes</span>
+              <span style="font-size:11px;color:var(--text-l);">· 21 mai</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="border:1px solid var(--border);border-radius:10px;overflow:hidden;">
+          <img src="https://brazileconomy.com.br/wp-content/uploads/2026/05/agro.jpg" alt="" style="width:100%;height:140px;object-fit:cover;">
+          <div style="padding:16px;">
+            <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--green);margin-bottom:7px;">Agronegócio</div>
+            <div style="font-size:14px;font-weight:700;color:var(--navy);line-height:1.4;margin-bottom:10px;font-family:var(--serif);">Soja, Milho e a Nova Fronteira: Como o Cerrado Está Redefinindo a Pauta Exportadora</div>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <img src="https://i.pravatar.cc/150?img=15" style="width:26px;height:26px;border-radius:50%;object-fit:cover;" alt="">
+              <span onclick="viewAuthorKodeId('Paulo Teixeira')" style="font-size:12px;color:var(--text-m);font-weight:600;cursor:pointer;border-bottom:1px dotted var(--text-l);">Paulo Teixeira</span>
+              <span style="font-size:11px;color:var(--text-l);">· 19 mai</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SECTION: SOBRE A BRAZILECONOMY ══ -->
+  <div style="background:var(--navy);padding:40px 20px;">
+    <div style="max-width:960px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;">
+      <div>
+        <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:var(--gold);margin-bottom:12px;">Sobre a BrazilEconomy</div>
+        <div style="font-size:22px;font-weight:800;color:#fff;line-height:1.3;margin-bottom:14px;">Análises estratégicas para quem toma decisões</div>
+        <div style="font-size:14px;color:rgba(255,255,255,.65);line-height:1.7;margin-bottom:22px;">A BrazilEconomy reúne repórteres credenciados, analistas e profissionais de mercado para produzir conteúdo aprofundado sobre economia, negócios e mercados brasileiros. Informação confiável para decisões seguras.</div>
+        <div style="display:flex;gap:28px;">
+          <div>
+            <div style="font-size:24px;font-weight:900;color:var(--gold);">12k+</div>
+            <div style="font-size:11px;color:rgba(255,255,255,.5);margin-top:2px;">Leitores ativos</div>
+          </div>
+          <div>
+            <div style="font-size:24px;font-weight:900;color:var(--gold);">6</div>
+            <div style="font-size:11px;color:rgba(255,255,255,.5);margin-top:2px;">Repórteres credenciados</div>
+          </div>
+          <div>
+            <div style="font-size:24px;font-weight:900;color:var(--gold);">340+</div>
+            <div style="font-size:11px;color:rgba(255,255,255,.5);margin-top:2px;">Artigos publicados</div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:16px 20px;display:flex;align-items:flex-start;gap:14px;">
+          <span style="font-size:22px;flex-shrink:0;">📰</span>
+          <div>
+            <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:3px;">Jornalismo com credencial</div>
+            <div style="font-size:12px;color:rgba(255,255,255,.55);line-height:1.5;">Cada autor tem um Kodes-ID verificado — saiba exatamente quem escreve e qual é a especialidade</div>
+          </div>
+        </div>
+        <div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:16px 20px;display:flex;align-items:flex-start;gap:14px;">
+          <span style="font-size:22px;flex-shrink:0;">🔍</span>
+          <div>
+            <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:3px;">Análise independente</div>
+            <div style="font-size:12px;color:rgba(255,255,255,.55);line-height:1.5;">Sem pauta política nem pressão publicitária — só os dados e a análise que o mercado precisa</div>
+          </div>
+        </div>
+        <div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:16px 20px;display:flex;align-items:flex-start;gap:14px;">
+          <span style="font-size:22px;flex-shrink:0;">🤝</span>
+          <div>
+            <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:3px;">Comunidade de analistas</div>
+            <div style="font-size:12px;color:rgba(255,255,255,.55);line-height:1.5;">Profissionais de mercado escrevem, comentam e debatem — o conhecimento coletivo no lugar certo</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ FOOTER ══ -->
+  <div style="background:var(--navy-dark);padding:28px 20px;border-top:1px solid rgba(255,255,255,.08);">
+    <div style="max-width:960px;margin:0 auto;">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;margin-bottom:20px;">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <img src="https://brazileconomy.com.br/wp-content/uploads/2025/02/cropped-Icone-270x270.png" style="width:28px;height:28px;border-radius:5px;" onerror="this.style.display='none'">
+          <span style="font-size:15px;font-weight:800;color:#fff;letter-spacing:-.01em;">Brazil<span style="color:var(--green);">Economy</span></span>
+        </div>
+        <div style="display:flex;gap:20px;flex-wrap:wrap;">
+          <span style="font-size:12px;color:rgba(255,255,255,.4);cursor:default;">Sobre</span>
+          <span style="font-size:12px;color:rgba(255,255,255,.4);cursor:default;">Contato</span>
+          <span style="font-size:12px;color:rgba(255,255,255,.4);cursor:default;">Política de Privacidade</span>
+          <span style="font-size:12px;color:rgba(255,255,255,.4);cursor:default;">Termos de Uso</span>
+          <span style="font-size:12px;color:rgba(255,255,255,.4);cursor:default;">Anuncie</span>
+        </div>
+      </div>
+      <div style="border-top:1px solid rgba(255,255,255,.08);padding-top:18px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
+        <div style="font-size:11px;color:rgba(255,255,255,.25);">© 2026 BrazilEconomy · Todos os direitos reservados</div>
+        <div style="font-size:11px;color:rgba(255,255,255,.25);">Credenciais verificadas por <span style="color:rgba(255,255,255,.45);font-weight:700;">Kodes-ID</span></div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /screen-0-col -->
+</div><!-- /screen-0 -->
+
+<!-- ══ STICKY BOTTOM CTA · Screen 0 only ══ -->
+<div id="screen-0-cta-bar" style="position:fixed;bottom:0;left:0;right:0;z-index:500;background:#fff;border-top:2px solid var(--border);padding:14px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;box-shadow:0 -6px 24px rgba(0,0,0,.10);flex-wrap:wrap;">
+  <div style="display:flex;align-items:center;gap:12px;min-width:0;">
+    <img src="https://brazileconomy.com.br/wp-content/uploads/2025/02/cropped-Icone-270x270.png" style="width:32px;height:32px;border-radius:6px;flex-shrink:0;" onerror="this.style.display='none'">
+    <div>
+      <div style="font-size:14px;font-weight:800;color:var(--navy);">Quer comentar, contribuir e ganhar visibilidade?</div>
+      <div style="font-size:12px;color:var(--text-l);margin-top:1px;">Crie sua conta gratuita — leva menos de 30 segundos. Sem cartão de crédito.</div>
+    </div>
+  </div>
+  <div style="display:flex;gap:8px;flex-shrink:0;align-items:center;">
+    <button onclick="goScreen(1)" style="background:var(--green);border:none;border-radius:7px;padding:10px 22px;color:#fff;font-size:13px;font-weight:800;cursor:pointer;white-space:nowrap;transition:background .2s;" onmouseover="this.style.background='var(--green-m)'" onmouseout="this.style.background='var(--green)'">Criar conta grátis →</button>
+    <button onclick="goScreen(1);document.getElementById('screen-0-cta-bar').style.display='none';" style="background:none;border:1px solid var(--border-m);border-radius:7px;padding:10px 16px;color:var(--text-m);font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap;">Entrar</button>
+    <button onclick="document.getElementById('screen-0-cta-bar').style.display='none';" style="background:none;border:none;color:var(--text-l);font-size:18px;cursor:pointer;padding:4px 8px;line-height:1;" title="Fechar">×</button>
+  </div>
 </div>
 
 
 <!-- SCREEN 1 · CADASTRO -->
 <div class="screen" id="screen-1">
-  <div class="center-page">
+  <div style="text-align:center;padding:14px 24px 0;">
+    <button onclick="goScreen(0)" style="background:none;border:none;color:var(--text-l);font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:5px;padding:6px 12px;border-radius:6px;transition:all .2s;" onmouseover="this.style.color='var(--navy)'" onmouseout="this.style.color='var(--text-l)'">← Continuar lendo sem cadastro</button>
+  </div>
+  <div class="center-page" style="padding-top:8px;">
     <div class="modal-card">
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:18px;">
         <img src="https://brazileconomy.com.br/wp-content/uploads/2025/02/cropped-Icone-270x270.png" style="width:28px;height:28px;border-radius:5px;" onerror="this.style.display='none'">
@@ -889,21 +1187,25 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:1
 <!-- SCREEN 2 · HOME L1 (engajamento + pontos) -->
 <div class="screen" id="screen-2">
 
-  <!-- Points strip (sits where ticker would be) -->
+  <!-- Points + upgrade strip -->
   <div class="pts-strip">
     <div class="pts-strip-inner">
       <div>
         <div class="pts-number" id="pts-display">12</div>
-        <div class="pts-sublabel">pontos de engajamento</div>
+        <div class="pts-sublabel">pontos · N1 Leitor</div>
       </div>
       <div class="pts-prog-wrap">
         <div class="pts-prog-lbl">
-          <span>Nível 1</span>
-          <span id="pts-threshold-label">38 pts para Nível 2</span>
+          <span style="font-weight:700;color:rgba(255,255,255,.8);">N1 → N2</span>
+          <span id="pts-threshold-label" style="color:var(--gold-l);">38 pts para comentar</span>
         </div>
         <div class="pts-prog-track"><div class="pts-prog-fill" id="pts-bar" style="width:24%"></div></div>
+        <div style="font-size:10px;color:rgba(255,255,255,.4);margin-top:3px;">Como ganhar pontos: curta artigos (+2), compartilhe (+5), convide amigos (+30)</div>
       </div>
-      <button class="btn-receba" style="font-size:11px;" onclick="goScreen(3)">Upgrade com questionário →</button>
+      <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-end;">
+        <button style="background:var(--green);border:none;border-radius:6px;padding:9px 18px;color:#fff;font-size:12px;font-weight:800;cursor:pointer;white-space:nowrap;transition:background .2s;" onmouseover="this.style.background='var(--green-m)'" onmouseout="this.style.background='var(--green)'" onclick="goScreen(3)">Subir para N2 → Comentarista</button>
+        <button style="background:none;border:none;color:rgba(255,255,255,.45);font-size:10px;cursor:pointer;padding:0;text-decoration:underline;" onclick="showToast('📖 Página de pontos em breve — N1: ler (+1) · curtir (+2) · compartilhar (+5) · indicar amigo (+30)')">O que desbloqueio no N2?</button>
+      </div>
     </div>
   </div>
   <!-- Level 2 nudge (hidden until threshold) -->
@@ -977,7 +1279,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:1
               <div class="dest-small-cat">Green Economy</div>
               <div class="dest-small-h">Net zero deixa de ser promessa e se consolida como regra entre grandes emissores</div>
               <div class="dest-small-by">
-                Ana Lima
+                <span onclick="viewAuthorKodeId('Ana Lima')" style="cursor:pointer;font-weight:600;border-bottom:1px dotted currentColor;">Ana Lima</span>
                 <span class="kode-badge kode-badge-gold" style="font-size:10px;padding:1px 6px;" onclick="showPopover(event,'BE-40008','Ana Lima','L4 · OPED','av-purple','AL',['V-04 Energia'],12,89,'Jan 2025')">BE-40008 ↗</span>
               </div>
               <div class="mini-engage"><span id="fl2" class="mini-like" onclick="quickLike('fl2')">👍 198</span></div>
@@ -1022,6 +1324,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:1
   <!-- Breadcrumb bar -->
   <div class="inner-page-hdr">
     <div class="inner-page-hdr-inner">
+      <button onclick="goScreen(2)" style="background:none;border:none;color:rgba(255,255,255,.5);font-size:12px;font-weight:600;cursor:pointer;padding:0;display:flex;align-items:center;gap:4px;margin-right:8px;transition:color .15s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.5)'">← Voltar</button>
       <span class="iph-crumb">BrazilEconomy</span>
       <span class="iph-sep">›</span>
       <span class="iph-crumb">Kodes-ID</span>
@@ -1068,6 +1371,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:1
   <!-- Breadcrumb + step indicator -->
   <div class="inner-page-hdr">
     <div class="inner-page-hdr-inner">
+      <button onclick="goScreen(2)" style="background:none;border:none;color:rgba(255,255,255,.5);font-size:12px;font-weight:600;cursor:pointer;padding:0;display:flex;align-items:center;gap:4px;margin-right:8px;transition:color .15s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.5)'">← Voltar</button>
       <span class="iph-crumb">Kodes-ID</span>
       <span class="iph-sep">›</span>
       <span class="iph-crumb active">Questionário BE Light</span>
@@ -1669,6 +1973,7 @@ Nada disso significa um colapso. Os fundamentos das commodities permanecem de su
 <script>
 // ── State ──
 let currentScreen = 0;
+let userLevel = 0;          // 0 = anon · 1 = N1 Leitor · 2 = N2 Comentarista
 let points = 12;
 const THRESHOLD = 50;
 let coauthOn = false;
@@ -1791,6 +2096,23 @@ const authorProfiles = {
        title:'Desmatamento Zero Como Meta Corporativa: Realidade ou Marketing?',
        date:'1 mai 2026', likes:'164', onclick:"showToast('📰 Artigo em breve')"}
     ]
+  },
+  'Ana Lima': {
+    kodeId:'BE-40008', role:'OPED', level:'N4',
+    photo:'https://i.pravatar.cc/400?img=49', initials:'AL',
+    verticals:['Energia & Clima','ESG & Sustentabilidade'],
+    textos:12, comentarios:89, since:'2025',
+    articles:[
+      {img:'https://brazileconomy.com.br/wp-content/uploads/2026/05/agro.jpg',           cat:'Green Economy',   catColor:'#00703c', pos:'center',
+       title:'Net Zero Deixa de Ser Promessa e se Consolida como Regra entre Grandes Emissores',
+       date:'24 mai 2026', likes:'198', onclick:"closeAuthorScreen()"},
+      {img:'https://brazileconomy.com.br/wp-content/uploads/2026/04/karpas-800x533.jpg', cat:'ESG',             catColor:'#00703c', pos:'center',
+       title:'Carbono Voluntário vs. Regulado: Qual Mercado o Brasil Deveria Priorizar?',
+       date:'10 mai 2026', likes:'134', onclick:"showToast('📰 Artigo em breve')"},
+      {img:'https://brazileconomy.com.br/wp-content/uploads/2026/05/Azumi.jpg',          cat:'Energia',         catColor:'#1e6db5', pos:'top',
+       title:'Hidrogênio Verde no Brasil: Potencial Real ou Narrativa de Exportação?',
+       date:'2 mai 2026', likes:'109', onclick:"showToast('📰 Artigo em breve')"}
+    ]
   }
 };
 
@@ -1843,6 +2165,80 @@ function viewArticle(id) {
   const bodyHtml = a.body.map(p =>
     `<p style="font-size:17px;line-height:1.78;color:#2d3748;margin-bottom:22px;font-family:Georgia,'Times New Roman',serif;">${p}</p>`
   ).join('');
+
+  // ── Build comments section based on current userLevel ──
+  const kibN2 = `<span style="display:inline-flex;align-items:center;background:#0e7490;color:#fff;border-radius:3px;overflow:hidden;font-size:0;vertical-align:middle;margin-left:4px;"><span style="font-size:9px;font-weight:800;padding:2px 5px;background:rgba(0,0,0,.2);">N2</span><span style="font-size:9px;padding:2px 5px;">Comentarista</span><span style="font-size:9px;padding:2px 5px;background:rgba(0,0,0,.15);">↗</span></span>`;
+  const userInitials = userName.split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2);
+
+  let commentsHtml;
+  if(userLevel === 0) {
+    commentsHtml = `
+      <div style="background:#f7f8fa;border:1px solid #e2e8f0;border-radius:12px;padding:32px;text-align:center;">
+        <div style="font-size:24px;margin-bottom:10px;">💬</div>
+        <div style="font-size:15px;font-weight:700;color:#1a202c;margin-bottom:6px;">Quer participar da conversa?</div>
+        <div style="font-size:13px;color:#718096;margin-bottom:20px;">Crie uma conta gratuita para comentar, acumular pontos e subir de nível</div>
+        <button onclick="closeArticleScreen();goScreen(1);" style="background:#00703c;color:#fff;border:none;border-radius:7px;padding:11px 28px;font-size:14px;font-weight:700;cursor:pointer;">Criar conta grátis →</button>
+      </div>`;
+  } else if(userLevel === 1) {
+    commentsHtml = `
+      <div style="background:#f0f9ff;border:1px dashed #7dd3fc;border-radius:12px;padding:24px;display:flex;gap:16px;align-items:flex-start;">
+        <div style="font-size:32px;flex-shrink:0;line-height:1;">🔒</div>
+        <div>
+          <div style="font-size:14px;font-weight:700;color:#1a202c;margin-bottom:5px;">Comentários disponíveis para N2 · Comentarista</div>
+          <div style="font-size:13px;color:#4a5568;line-height:1.5;margin-bottom:16px;">Você está em N1 · Leitor. Continue acumulando pontos ou complete o questionário editorial para desbloquear os comentários e muito mais.</div>
+          <button onclick="closeArticleScreen();goScreen(3);" style="background:#0e7490;color:#fff;border:none;border-radius:7px;padding:10px 22px;font-size:13px;font-weight:700;cursor:pointer;">Subir para N2 · Comentarista →</button>
+        </div>
+      </div>`;
+  } else {
+    // N2+ — full comment thread
+    commentsHtml = `
+      <div id="comment-thread" style="margin-bottom:24px;">
+        <div style="display:flex;gap:12px;padding:16px 0;border-bottom:1px solid #e2e8f0;">
+          <img src="https://i.pravatar.cc/150?img=32" style="width:38px;height:38px;border-radius:50%;flex-shrink:0;object-fit:cover;" alt="">
+          <div style="flex:1;">
+            <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:5px;">
+              <span style="font-weight:700;font-size:13px;color:#1a202c;">Felipe Andrade</span>
+              ${kibN2}
+              <span style="font-size:11px;color:#a0aec0;">há 2h</span>
+            </div>
+            <p style="font-size:13px;color:#2d3748;line-height:1.6;margin:0 0 8px;">O diferencial de rastreabilidade já está sendo precificado pelos compradores chineses — vi isso de perto em contratos fechados no 1T26. A questão é quem financia a digitalização das cooperativas menores.</p>
+            <div style="display:flex;gap:14px;">
+              <button onclick="upvoteComment(this)" style="background:none;border:none;color:#718096;font-size:12px;cursor:pointer;padding:0;display:inline-flex;align-items:center;gap:4px;">👍 <span>7</span></button>
+              <button style="background:none;border:none;color:#a0aec0;font-size:12px;cursor:pointer;padding:0;">Responder</button>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex;gap:12px;padding:16px 0;border-bottom:1px solid #e2e8f0;">
+          <img src="https://i.pravatar.cc/150?img=22" style="width:38px;height:38px;border-radius:50%;flex-shrink:0;object-fit:cover;" alt="">
+          <div style="flex:1;">
+            <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:5px;">
+              <span style="font-weight:700;font-size:13px;color:#1a202c;">Camila Rocha</span>
+              ${kibN2}
+              <span style="font-size:11px;color:#a0aec0;">há 5h</span>
+            </div>
+            <p style="font-size:13px;color:#2d3748;line-height:1.6;margin:0 0 8px;">O ponto sobre a carne bovina é subestimado. O corredor mexicano abre um precedente regional que pode se repetir com outros países do Mercosul. Vale um artigo só sobre isso.</p>
+            <div style="display:flex;gap:14px;">
+              <button onclick="upvoteComment(this)" style="background:none;border:none;color:#718096;font-size:12px;cursor:pointer;padding:0;display:inline-flex;align-items:center;gap:4px;">👍 <span>12</span></button>
+              <button style="background:none;border:none;color:#a0aec0;font-size:12px;cursor:pointer;padding:0;">Responder</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Input row -->
+      <div style="display:flex;gap:10px;align-items:flex-start;">
+        <div style="width:38px;height:38px;border-radius:50%;background:#0e7490;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff;flex-shrink:0;">${userInitials}</div>
+        <div style="flex:1;">
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:7px;">
+            <span style="font-size:13px;font-weight:700;color:#1a202c;">${userName}</span>
+            ${kibN2}
+          </div>
+          <textarea id="comment-input" placeholder="Adicione sua perspectiva…" style="width:100%;border:1.5px solid #e2e8f0;border-radius:8px;padding:10px 13px;font-size:13px;font-family:-apple-system,BlinkMacSystemFont,sans-serif;line-height:1.55;resize:vertical;min-height:76px;outline:none;color:#1a202c;background:#fff;transition:border-color .2s;" onfocus="this.style.borderColor='#0e7490'" onblur="this.style.borderColor='#e2e8f0'"></textarea>
+          <div style="display:flex;justify-content:flex-end;margin-top:8px;">
+            <button onclick="submitArticleComment()" style="background:#0e7490;color:#fff;border:none;border-radius:7px;padding:9px 22px;font-size:13px;font-weight:700;cursor:pointer;transition:background .2s;" onmouseover="this.style.background='#0a5f7a'" onmouseout="this.style.background='#0e7490'">Publicar →</button>
+          </div>
+        </div>
+      </div>`;
+  }
 
   const relatedHtml = a.related.map(r => `
     <div onclick="showToast('📰 Artigo em breve')" style="display:flex;gap:12px;padding:14px 0;border-bottom:1px solid #e2e8f0;cursor:pointer;align-items:flex-start;">
@@ -1971,6 +2367,14 @@ function viewArticle(id) {
         ${relatedHtml}
       </div>
 
+      <!-- ── Comments ── -->
+      <div style="margin-top:40px;">
+        <div style="font-size:16px;font-weight:800;color:#1a202c;margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid #e2e8f0;">
+          Comentários
+        </div>
+        ${commentsHtml}
+      </div>
+
     </div><!-- end article wrapper -->
   `;
 
@@ -1982,6 +2386,7 @@ function viewArticle(id) {
 function closeArticleScreen() {
   document.getElementById('screen-article').style.display = 'none';
   document.querySelectorAll('.screen').forEach((s,i) => {
+    s.style.display = '';                                          // clear inline override set by viewAuthorKodeId
     s.classList.toggle('active', i === (window._prevScreen||0));
   });
   window.scrollTo({top:0, behavior:'smooth'});
@@ -1999,6 +2404,9 @@ function goScreen(n) {
   document.getElementById('screen-author').style.display = 'none';
   document.getElementById('screen-article').style.display = 'none';
   currentScreen = n;
+  // Promote userLevel based on progression (demo bar can also advance level)
+  if(n >= 2 && userLevel < 1) userLevel = 1;   // reached N1 home → Leitor
+  if(n >= 5 && userLevel >= 1) userLevel = 2;   // reached Kode-ID reveal → Comentarista
   updateHeader();
   window.scrollTo({top:0, behavior:'smooth'});
   closePopover();
@@ -2009,40 +2417,79 @@ function updateHeader() {
   const txt  = document.getElementById('nav-user-text');
   const si   = document.getElementById('nav-signin');
   const cta  = document.getElementById('nav-cta');
-  if(currentScreen === 0) {
+  const back = document.getElementById('nav-back');
+  const bar  = document.getElementById('screen-0-cta-bar');
+
+  // Bottom sticky bar: only for anonymous visitors on the homepage
+  if(bar) bar.style.display = (userLevel === 0 && currentScreen === 0) ? 'flex' : 'none';
+
+  if(userLevel === 0) {
+    // ── Anonymous ──
     orb.className='nav-orb orb-anon'; orb.textContent='?';
     txt.textContent='Não conectado'; txt.style.color='rgba(255,255,255,.4)';
-    si.style.display='inline-block'; cta.style.display='inline-block';
-  } else if(currentScreen <= 2) {
+    if(currentScreen === 1) {
+      // On signup form — back link so they never feel trapped
+      back.style.display='inline-block';
+      si.style.display='none'; cta.style.display='none';
+    } else {
+      back.style.display='none';
+      si.style.display='inline-block'; si.textContent='Entrar';
+      cta.style.display='inline-block'; cta.textContent='Criar conta grátis →';
+      cta.onclick = () => goScreen(1);
+    }
+
+  } else if(userLevel === 1) {
+    // ── N1 Leitor — logged in, not yet N2 ──
     orb.className='nav-orb orb-l1'; orb.textContent='1';
-    txt.innerHTML='<span style="color:'+cssVar('gold-l')+';">'+points+' pts</span>&nbsp; Nível 1';
-    si.style.display='none'; cta.style.display='none';
-  } else if(currentScreen <= 4) {
-    orb.className='nav-orb orb-l1'; orb.textContent='1';
-    txt.textContent='Fazendo upgrade…'; txt.style.color='rgba(255,255,255,.6)';
-    si.style.display='none'; cta.style.display='none';
+    si.style.display='none';
+    if(currentScreen >= 3 && currentScreen <= 4) {
+      // Mid-onboarding — show "upgrading" state + back link
+      txt.innerHTML='<span style="color:rgba(255,255,255,.5);">Fazendo upgrade</span>';
+      back.style.display='inline-block'; cta.style.display='none';
+    } else {
+      // Homepage, articles, author pages — show points + N2 nudge
+      txt.innerHTML='<span style="color:'+cssVar('gold-l')+';">'+points+' pts</span>&nbsp;·&nbsp;N1';
+      back.style.display='none';
+      cta.style.display='inline-block'; cta.textContent='Subir para N2 →';
+      cta.onclick = () => goScreen(3);
+    }
+
   } else {
+    // ── N2 Comentarista (or higher) — full member ──
     orb.className='nav-orb orb-l2'; orb.textContent='2';
-    txt.innerHTML='<span style="color:#6ee7a0;font-weight:700;">Nível 2</span>&nbsp; BE-20891';
-    si.style.display='none'; cta.style.display='none';
+    txt.innerHTML='<span style="color:#6ee7a0;font-weight:700;">N2</span>&nbsp;· BE-20891';
+    back.style.display='none'; si.style.display='none'; cta.style.display='none';
   }
 }
 function cssVar(v){ return getComputedStyle(document.documentElement).getPropertyValue('--'+v).trim(); }
 
 // ── Signup ──
 function doSignup() {
-  const n = document.getElementById('user-name').value.trim() || 'Carlos Oliveira';
-  userName = n;
-  hubName = n.split(' ')[0];
-  document.getElementById('welcome-name').textContent = hubName;
-  document.getElementById('kc-name').textContent = n;
-  document.getElementById('hub-name').textContent = hubName;
-  document.getElementById('comment-author').textContent = n;
-  document.getElementById('kode-mini-name').textContent = n;
-  const sn = document.getElementById('hub-sidebar-name');
-  if(sn) sn.textContent = n;
+  const n = (document.getElementById('user-name') || {}).value || '';
+  const name = n.trim() || 'Carlos Oliveira';
+  userName = name;
+  hubName  = name.split(' ')[0];
+  userLevel = 1;   // N1 Leitor — persists across all screens from now on
+
+  // Navigate first — then update name references throughout the app
   goScreen(2);
-  addPoints(5, 'Conta criada +5 pts');
+
+  // Safely update every personalised element (null-guarded)
+  const set = (id, val) => { const el = document.getElementById(id); if(el) el.textContent = val; };
+  set('welcome-name',   hubName);
+  set('kc-name',        name);
+  set('hub-name',       hubName);
+  set('comment-author', name);
+  set('kode-mini-name', name);
+  set('hub-sidebar-name', name);
+
+  // sync the small initials inside the welcome card
+  const initials = name.split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2);
+  const sm = document.getElementById('n1w-initials-sm');
+  if(sm) sm.textContent = initials;
+
+  addPoints(5, '🎉 Bem-vindo! +5 pts');
+  showN1Welcome(name);
 }
 
 // ── Engagement ──
@@ -2342,6 +2789,7 @@ function closeAuthorScreen() {
   document.getElementById('screen-author').style.display = 'none';
   document.getElementById('screen-article').style.display = 'none';
   document.querySelectorAll('.screen').forEach((s,i) => {
+    s.style.display = '';                                          // clear inline override set by viewAuthorKodeId
     s.classList.toggle('active', i === (window._prevScreen||0));
   });
   window.scrollTo({top:0, behavior:'smooth'});
@@ -2359,6 +2807,48 @@ function downloadAuthorCard(name) {
 }
 // backward-compat alias
 function downloadMariaSantosCard() { downloadAuthorCard('Maria Santos'); }
+
+// ── Article comments ──
+function submitArticleComment() {
+  const ta = document.getElementById('comment-input');
+  const text = (ta ? ta.value : '').trim();
+  if(!text) { showToast('Escreva algo antes de publicar'); return; }
+
+  const thread = document.getElementById('comment-thread');
+  if(!thread) return;
+  const initials = userName.split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2);
+  const kibN2 = `<span style="display:inline-flex;align-items:center;background:#0e7490;color:#fff;border-radius:3px;overflow:hidden;font-size:0;vertical-align:middle;margin-left:4px;"><span style="font-size:9px;font-weight:800;padding:2px 5px;background:rgba(0,0,0,.2);">N2</span><span style="font-size:9px;padding:2px 5px;">Comentarista</span><span style="font-size:9px;padding:2px 5px;background:rgba(0,0,0,.15);">↗</span></span>`;
+  const safe = text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+
+  const el = document.createElement('div');
+  el.style.cssText = 'display:flex;gap:12px;padding:16px 0;border-bottom:1px solid #e2e8f0;';
+  el.innerHTML = `
+    <div style="width:38px;height:38px;border-radius:50%;background:#0e7490;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff;flex-shrink:0;">${initials}</div>
+    <div style="flex:1;">
+      <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:5px;">
+        <span style="font-weight:700;font-size:13px;color:#1a202c;">${userName}</span>
+        ${kibN2}
+        <span style="font-size:11px;color:#a0aec0;">agora</span>
+      </div>
+      <p style="font-size:13px;color:#2d3748;line-height:1.6;margin:0 0 8px;">${safe}</p>
+      <div style="display:flex;gap:14px;">
+        <button onclick="upvoteComment(this)" style="background:none;border:none;color:#718096;font-size:12px;cursor:pointer;padding:0;display:inline-flex;align-items:center;gap:4px;">👍 <span>0</span></button>
+        <button style="background:none;border:none;color:#a0aec0;font-size:12px;cursor:pointer;padding:0;">Responder</button>
+      </div>
+    </div>`;
+  thread.insertBefore(el, thread.firstChild);
+  ta.value = '';
+  addPoints(5, '💬 Comentário publicado +5 pts');
+  showToast('💬 Comentário publicado!');
+}
+
+function upvoteComment(btn) {
+  const span = btn.querySelector('span');
+  if(!span) return;
+  span.textContent = parseInt(span.textContent) + 1;
+  btn.style.color = '#00703c';
+  btn.disabled = true;
+}
 
 // ── Author link actions ──
 function viewAuthorTexts() {
@@ -2547,6 +3037,113 @@ function downloadPopoverCard() {
 // ── Init ──
 updateHeader();
 transformBadges();   // upgrade all .kode-badge → .kib pill on page load
+
+// ── N1 Welcome Modal ──
+function showN1Welcome(name) {
+  const first = name.split(' ')[0];
+  const initials = name.split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2);
+  // Generate a pseudo-random sequential ID from the name
+  const seq = String((name.split('').reduce((a,c)=>a+c.charCodeAt(0),0) % 9000) + 1000).padStart(4,'0');
+  const kodeId = 'BE-1' + seq;
+
+  const modal = document.getElementById('n1-welcome-modal');
+  document.getElementById('n1w-first').textContent = first;
+  document.getElementById('n1w-initials').textContent = initials;
+  document.getElementById('n1w-name').textContent = name;
+  document.getElementById('n1w-kode-id').textContent = kodeId;
+  // progress: 5 pts of 100 threshold
+  document.getElementById('n1w-pts-label').textContent = '5 / 100 pts para N2';
+  document.getElementById('n1w-pts-bar').style.width = '5%';
+
+  modal.style.display = 'flex';
+  // slight entrance animation
+  const box = document.getElementById('n1-welcome-box');
+  box.style.opacity = '0';
+  box.style.transform = 'translateY(24px) scale(.97)';
+  requestAnimationFrame(() => {
+    box.style.transition = 'opacity .35s ease, transform .35s ease';
+    box.style.opacity = '1';
+    box.style.transform = 'translateY(0) scale(1)';
+  });
+}
+function closeN1Welcome() {
+  const modal = document.getElementById('n1-welcome-modal');
+  const box = document.getElementById('n1-welcome-box');
+  box.style.transition = 'opacity .2s ease, transform .2s ease';
+  box.style.opacity = '0';
+  box.style.transform = 'translateY(12px) scale(.97)';
+  setTimeout(() => { modal.style.display = 'none'; }, 200);
+}
 </script>
+
+<!-- ══ N1 WELCOME MODAL ══ -->
+<div id="n1-welcome-modal" style="display:none;position:fixed;inset:0;z-index:2000;background:rgba(17,29,54,.72);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:20px;">
+  <div id="n1-welcome-box" style="background:#fff;border-radius:16px;width:100%;max-width:460px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.4);">
+    <!-- green header band -->
+    <div style="background:linear-gradient(135deg,#00703c 0%,#009f4d 100%);padding:28px 28px 24px;text-align:center;">
+      <div style="font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:12px;">Cadastro confirmado</div>
+      <!-- avatar orb -->
+      <div style="width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.2);border:3px solid rgba(255,255,255,.6);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:22px;font-weight:800;color:#fff;" id="n1w-initials">CO</div>
+      <div style="font-size:20px;font-weight:800;color:#fff;margin-bottom:4px;">Bem-vindo, <span id="n1w-first">Carlos</span>!</div>
+      <div style="font-size:13px;color:rgba(255,255,255,.8);">Você já faz parte da BrazilEconomy</div>
+    </div>
+
+    <!-- credential card -->
+    <div style="padding:20px 28px;border-bottom:1px solid #e2e8f0;">
+      <div style="background:#f0f4f8;border:1px solid #cbd5e0;border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:14px;">
+        <div style="width:44px;height:44px;border-radius:50%;background:#4a5568;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:#e2e8f0;flex-shrink:0;" id="n1w-initials-sm">CO</div>
+        <div style="flex:1;min-width:0;">
+          <div style="font-size:14px;font-weight:700;color:#1a202c;" id="n1w-name">Carlos Oliveira</div>
+          <div style="font-size:12px;color:#718096;margin-top:1px;">
+            <span style="display:inline-flex;align-items:center;gap:4px;background:#4a5568;color:#e2e8f0;border-radius:20px;padding:2px 8px;font-size:11px;font-weight:700;">N1 · Leitor</span>
+          </div>
+        </div>
+        <div style="text-align:right;flex-shrink:0;">
+          <div style="font-size:13px;font-weight:800;color:#4a5568;letter-spacing:.04em;" id="n1w-kode-id">BE-10042</div>
+          <div style="font-size:10px;color:#a0aec0;margin-top:2px;">Kodes-ID</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- what you can do -->
+    <div style="padding:18px 28px;border-bottom:1px solid #e2e8f0;">
+      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#718096;margin-bottom:12px;">Com o N1 você pode</div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:#1a202c;">
+          <span style="color:#00703c;font-size:15px;">✓</span> Ler todos os artigos da BrazilEconomy
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:#1a202c;">
+          <span style="color:#00703c;font-size:15px;">✓</span> Curtir e reagir a artigos — e acumular pontos
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:#1a202c;">
+          <span style="color:#00703c;font-size:15px;">✓</span> Compartilhar conteúdo nas redes sociais
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:#a0aec0;">
+          <span style="font-size:15px;">→</span> Ao chegar em <strong style="color:#0e7490;">100 pts</strong>, você sobe para N2 · Comentarista
+        </div>
+      </div>
+    </div>
+
+    <!-- progress bar -->
+    <div style="padding:14px 28px;border-bottom:1px solid #e2e8f0;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:7px;">
+        <span style="font-size:12px;font-weight:600;color:#4a5568;">Progresso para N2</span>
+        <span style="font-size:12px;font-weight:700;color:#0e7490;" id="n1w-pts-label">5 / 100 pts</span>
+      </div>
+      <div style="height:7px;background:#e2e8f0;border-radius:4px;overflow:hidden;">
+        <div id="n1w-pts-bar" style="height:100%;background:linear-gradient(90deg,#0e7490,#38bdf8);border-radius:4px;width:5%;transition:width .6s ease;"></div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div style="padding:20px 28px;text-align:center;">
+      <button onclick="closeN1Welcome()" style="background:linear-gradient(135deg,#00703c,#009f4d);color:#fff;border:none;border-radius:8px;padding:13px 32px;font-size:15px;font-weight:700;cursor:pointer;width:100%;letter-spacing:.02em;">
+        Começar a explorar →
+      </button>
+      <div style="margin-top:10px;font-size:12px;color:#a0aec0;">Seu Kodes-ID ficará sempre visível no canto superior direito</div>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
