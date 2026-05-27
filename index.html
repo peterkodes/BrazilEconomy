@@ -741,13 +741,13 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:1
 
   <!-- HERO -->
   <div class="hero">
-    <div class="hero-img-side">
+    <div class="hero-img-side" onclick="viewArticle('superciclo')" style="cursor:pointer;">
       <img src="https://brazileconomy.com.br/wp-content/uploads/2026/05/agro.jpg" alt="Agronegócio — Superciclo de Commodities">
       <div class="hero-overlay"></div>
     </div>
     <div class="hero-text-side">
       <div class="hero-cat">Agronegócio</div>
-      <div class="hero-h">Brasil e o Novo Superciclo de Commodities: O Que 2026 Reserva para o Agronegócio</div>
+      <div class="hero-h" onclick="viewArticle('superciclo')" style="cursor:pointer;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Brasil e o Novo Superciclo de Commodities: O Que 2026 Reserva para o Agronegócio</div>
       <div class="hero-byline" style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
         <span class="kode-mini-card" onclick="viewAuthorKodeId('Maria Santos')">
           <div class="kmc-left">
@@ -919,13 +919,13 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:1
 
   <!-- HERO (same as screen 0 but with like action) -->
   <div class="hero">
-    <div class="hero-img-side">
+    <div class="hero-img-side" onclick="viewArticle('superciclo')" style="cursor:pointer;">
       <img src="https://brazileconomy.com.br/wp-content/uploads/2026/05/agro.jpg" alt="Agronegócio — Superciclo de Commodities">
       <div class="hero-overlay"></div>
     </div>
     <div class="hero-text-side">
       <div class="hero-cat">Agronegócio</div>
-      <div class="hero-h">Brasil e o Novo Superciclo de Commodities: O Que 2026 Reserva para o Agronegócio</div>
+      <div class="hero-h" onclick="viewArticle('superciclo')" style="cursor:pointer;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Brasil e o Novo Superciclo de Commodities: O Que 2026 Reserva para o Agronegócio</div>
       <div class="hero-byline" style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
         <span class="kode-mini-card" onclick="viewAuthorKodeId('Maria Santos')">
           <div class="kmc-left">
@@ -1339,6 +1339,9 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:1
 <!-- ══ AUTHOR PROFILE · dynamic ══ -->
 <div id="screen-author" style="display:none;"></div>
 
+<!-- ══ ARTICLE DETAIL · dynamic ══ -->
+<div id="screen-article" style="display:none;"></div>
+
 <!-- SCREEN 6 · HUB L2 -->
 <div class="screen" id="screen-6">
   <!-- Full-width welcome banner -->
@@ -1363,7 +1366,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:1
       <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:22px;">
         <div style="padding:18px 20px;border-bottom:1px solid var(--border);">
           <span class="tag-chip chip-green" style="margin-bottom:10px;display:inline-block;">Agronegócio · V-03</span>
-          <div style="font-size:18px;font-weight:700;color:var(--navy);margin-bottom:8px;font-family:var(--serif);line-height:1.3;">Brasil e o Novo Superciclo de Commodities: O Que 2026 Reserva para o Agronegócio</div>
+          <div onclick="viewArticle('superciclo')" style="font-size:18px;font-weight:700;color:var(--navy);margin-bottom:8px;font-family:var(--serif);line-height:1.3;cursor:pointer;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Brasil e o Novo Superciclo de Commodities: O Que 2026 Reserva para o Agronegócio</div>
           <div style="font-size:12px;color:var(--text-l);display:flex;align-items:center;gap:5px;flex-wrap:wrap;">
             Maria Santos
             <span class="kode-badge" onclick="showPopover(event,'BE-30012','Maria Santos','L3 · Repórter','av-blue','MS',['V-03 Agronegócio'],47,312,'Mar 2024')">BE-30012 ↗</span>
@@ -1695,7 +1698,7 @@ const authorProfiles = {
     articles:[
       {img:'https://brazileconomy.com.br/wp-content/uploads/2026/05/agro.jpg',        cat:'Agronegócio',     catColor:'#00703c', pos:'center',
        title:'Brasil e o Novo Superciclo de Commodities: O Que 2026 Reserva para o Agronegócio',
-       date:'24 mai 2026', likes:'412', onclick:"closeAuthorScreen()"},
+       date:'24 mai 2026', likes:'412', onclick:"viewArticle('superciclo')"},
       {img:'https://brazileconomy.com.br/wp-content/uploads/2026/05/Azumi.jpg',        cat:'Comércio Exterior',catColor:'#00703c', pos:'top',
        title:'A Pressão nos Custos de Insumos e o Futuro das Exportações Brasileiras',
        date:'18 mai 2026', likes:'287', onclick:"showToast('📰 Artigo em breve')"},
@@ -1791,6 +1794,199 @@ const authorProfiles = {
   }
 };
 
+// ── Article data registry ──
+const articleData = {
+  'superciclo': {
+    id: 'superciclo',
+    title: 'Brasil e o Novo Superciclo de Commodities: O Que 2026 Reserva para o Agronegócio',
+    deck: 'Com demanda chinesa em alta, dólar acima de R$5,80 e oferta argentina comprimida, o agronegócio brasileiro está no centro de uma nova janela de oportunidade — mas os riscos estruturais não desapareceram.',
+    cat: 'Agronegócio', catColor: '#00703c',
+    author: 'Maria Santos',
+    date: '24 mai 2026', readTime: '7 min', likes: 412,
+    img: 'https://brazileconomy.com.br/wp-content/uploads/2026/05/agro.jpg',
+    shareUrl: 'https://brazileconomy.com.br/superciclo-commodities-2026',
+    shareText: 'Brasil e o Novo Superciclo de Commodities — análise de Maria Santos na @BrazilEconomy',
+    body: [
+      'O agronegócio brasileiro entra no segundo semestre de 2026 em posição que poucos analistas antecipavam há dois anos. A soja oscila em torno de US$ 14,80 por bushel em Chicago, o milho sustenta recordes de exportação e a carne bovina encontrou novos corredores de escoamento após a abertura parcial do mercado mexicano a frigoríficos brasileiros. O país responde hoje por 28% do comércio global de proteínas — uma concentração sem precedentes que já desperta tanto admiração quanto preocupação nos fóruns multilaterais.',
+      'A locomotiva da demanda continua sendo a China, mas o perfil das compras mudou substancialmente. Pequim não busca mais apenas volume: quer contratos de longo prazo com rastreabilidade certificada e compromissos de sustentabilidade documentados. Esse movimento favorece os grandes grupos integrados do Centro-Oeste, que já investiram em sistemas de rastreio por blockchain, mas pressiona cooperativas menores que ainda operam com certificações analógicas. O diferencial entre produtores certificados e não certificados, que em 2023 era de US$ 0,40 por saca, hoje supera US$ 1,20 — e a tendência é de alargamento.',
+      'O diferencial competitivo do Brasil frente à Argentina e aos Estados Unidos nunca foi tão pronunciado. Buenos Aires enfrenta seu quarto ano consecutivo de restrições cambiais que desincentivam o investimento em insumos; Washington tenta responder ao protecionismo europeu com subsídios que distorcem os custos mas não resolvem o gap de produtividade. Em contrapartida, o produtor brasileiro operou a chamada "safra-recorde tripla" — soja, milho e algodão em alta simultânea — pela terceira vez nos últimos cinco anos, consolidando o Cerrado como o celeiro mais competitivo do planeta.',
+      'Os riscos, no entanto, são reais e merecem leitura sóbria. A dependência logística no Arco Norte — eixo que concentra 62% das exportações de grãos — continua sendo o calcanhar de Aquiles do modelo. Uma estiagem prolongada no Tapajós pode paralisar a hidrovia e custar ao setor até R$ 4 bilhões por semana em custos extras de desvio para os portos do Sul. Some-se a isso a pressão crescente da Diretiva de Desmatamento da União Europeia (EUDR), cujo prazo final em dezembro de 2026 ainda não tem regulamentação definitiva — uma incerteza que já levou três importadores alemães a pausar novos contratos com fornecedores brasileiros sem certificação EUDR-compliant.',
+      'O saldo, porém, pende claramente para o positivo. Projeções do CEPEA-Esalq indicam que o PIB do agronegócio deve crescer entre 4,2% e 5,8% em 2026, puxado principalmente pela valorização cambial, pela colheita de verão acima da média e pela retomada das exportações de frango para o Oriente Médio. Para os analistas que acompanham o setor, a questão não é mais se o Brasil vai consolidar sua liderança global — é se as instituições, a logística e a agenda ambiental conseguirão acompanhar o ritmo acelerado da produção.'
+    ],
+    related: [
+      { id: null, title: 'A Pressão nos Custos de Insumos e o Futuro das Exportações Brasileiras', cat: 'Comércio Exterior', author: 'Maria Santos', img: 'https://brazileconomy.com.br/wp-content/uploads/2026/05/Azumi.jpg', date: '18 mai 2026' },
+      { id: null, title: 'Arcabouço Fiscal e Contradições: Uma Agenda de Reformas Que o Governo Reluta em Adotar', cat: 'Macroeconomia', author: 'Jaqueline Mendes', img: 'https://brazileconomy.com.br/wp-content/uploads/2026/05/Azumi.jpg', date: '25 mai 2026' }
+    ]
+  }
+};
+
+// ── Article detail page ──
+function viewArticle(id) {
+  const a = articleData[id];
+  if (!a) { showToast('📰 Artigo em breve'); return; }
+
+  window._prevScreen = currentScreen;
+  document.querySelectorAll('.screen').forEach(s => s.style.display = 'none');
+  document.getElementById('screen-author').style.display = 'none';
+
+  const authorP = authorProfiles[a.author] || {};
+  const authorPhoto = authorPhotos[a.author] || '';
+  const authorInitials = (authorP.initials) || a.author.split(' ').map(w=>w[0]).join('');
+
+  const encUrl   = encodeURIComponent(a.shareUrl);
+  const encTitle = encodeURIComponent(a.shareText);
+  const xUrl    = `https://twitter.com/intent/tweet?text=${encTitle}&url=${encUrl}`;
+  const fbUrl   = `https://www.facebook.com/sharer/sharer.php?u=${encUrl}`;
+  const liUrl   = `https://www.linkedin.com/shareArticle?mini=true&url=${encUrl}&title=${encTitle}`;
+  const waUrl   = `https://wa.me/?text=${encTitle}%20${encUrl}`;
+
+  const bodyHtml = a.body.map(p =>
+    `<p style="font-size:17px;line-height:1.78;color:#2d3748;margin-bottom:22px;font-family:Georgia,'Times New Roman',serif;">${p}</p>`
+  ).join('');
+
+  const relatedHtml = a.related.map(r => `
+    <div onclick="showToast('📰 Artigo em breve')" style="display:flex;gap:12px;padding:14px 0;border-bottom:1px solid #e2e8f0;cursor:pointer;align-items:flex-start;">
+      <img src="${r.img}" style="width:80px;height:56px;object-fit:cover;border-radius:6px;flex-shrink:0;" alt="">
+      <div>
+        <div style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:${a.catColor};margin-bottom:3px;">${r.cat}</div>
+        <div style="font-size:13px;font-weight:700;color:#1a202c;line-height:1.35;margin-bottom:4px;">${r.title}</div>
+        <div style="font-size:11px;color:#718096;">Por <span onclick="event.stopPropagation();viewAuthorKodeId('${r.author}')" style="cursor:pointer;text-decoration:underline;">${r.author}</span> · ${r.date}</div>
+      </div>
+    </div>`).join('');
+
+  document.getElementById('screen-article').innerHTML = `
+    <!-- Top nav bar -->
+    <div style="background:#fff;border-bottom:1px solid #e0e6ed;padding:10px 24px;display:flex;align-items:center;gap:12px;position:sticky;top:40px;z-index:90;">
+      <button onclick="closeArticleScreen()" style="background:none;border:1px solid #cbd5e0;border-radius:5px;padding:6px 14px;font-size:12px;font-weight:700;color:#1e6db5;cursor:pointer;display:inline-flex;align-items:center;gap:6px;flex-shrink:0;">← Voltar</button>
+      <div style="font-size:12px;color:#718096;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${a.cat} · ${a.title.substring(0,60)}…</div>
+      <div style="margin-left:auto;display:flex;gap:8px;flex-shrink:0;">
+        <button onclick="window.open('${xUrl}','_blank')" style="background:#000;border:none;border-radius:5px;padding:6px 12px;color:#fff;font-size:11px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:5px;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.265 5.632 5.9-5.632Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          Compartilhar
+        </button>
+        <button onclick="navigator.clipboard&&navigator.clipboard.writeText('${a.shareUrl}').then(()=>showToast('🔗 Link copiado!'))" style="background:#f0f4f8;border:1px solid #e2e8f0;border-radius:5px;padding:6px 12px;color:#4a5568;font-size:11px;font-weight:700;cursor:pointer;">🔗 Copiar link</button>
+      </div>
+    </div>
+
+    <!-- Article wrapper -->
+    <div style="max-width:720px;margin:0 auto;padding:32px 24px 80px;">
+
+      <!-- Category + headline -->
+      <div style="display:inline-flex;align-items:center;gap:6px;background:${a.catColor};color:#fff;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;padding:3px 10px;border-radius:4px;margin-bottom:14px;">${a.cat}</div>
+      <h1 style="font-family:Georgia,'Times New Roman',serif;font-size:clamp(24px,4vw,36px);font-weight:700;line-height:1.18;color:#1a2744;margin-bottom:14px;letter-spacing:-.3px;">${a.title}</h1>
+      <p style="font-size:17px;color:#4a5568;line-height:1.55;font-style:italic;margin-bottom:22px;border-left:3px solid ${a.catColor};padding-left:16px;">${a.deck}</p>
+
+      <!-- Author byline with Kodes-ID mini-card -->
+      <div style="display:flex;align-items:center;gap:12px;padding:16px 0;border-top:3px solid ${a.catColor};border-bottom:1px solid #e2e8f0;margin-bottom:28px;flex-wrap:wrap;">
+        <span class="kode-mini-card" onclick="viewAuthorKodeId('${a.author}')" style="width:170px;height:106px;">
+          <div class="kmc-left">
+            <div class="kmc-name">${a.author}</div>
+            <div class="kmc-lvl">${authorP.level||'N3'} · ${authorP.role||'Repórter'}</div>
+            <div class="kmc-id">${authorP.kodeId||''}</div>
+          </div>
+          <div class="kmc-photo"><img src="${authorPhoto.replace('/150?','/300?')}" alt="${a.author}"></div>
+          <div class="kmc-accent"></div>
+        </span>
+        <div>
+          <div style="font-size:13px;font-weight:700;color:#1a202c;">${a.author}</div>
+          <div style="font-size:12px;color:#718096;margin-top:2px;">Repórter N3 · BrazilEconomy</div>
+          <div style="font-size:12px;color:#718096;margin-top:1px;">${a.date} · ${a.readTime} de leitura</div>
+          <button onclick="viewAuthorKodeId('${a.author}')" style="margin-top:6px;background:none;border:1px solid #cbd5e0;border-radius:4px;padding:3px 10px;font-size:11px;font-weight:600;color:#1e6db5;cursor:pointer;">Ver perfil Kodes-ID →</button>
+        </div>
+        <div style="margin-left:auto;display:flex;align-items:center;gap:8px;">
+          <button id="art-like-btn" onclick="this.innerHTML='👍 '+String(${a.likes}+1);showToast('👍 Obrigado pelo voto!')" style="background:#f0f4f8;border:1px solid #e2e8f0;border-radius:20px;padding:6px 14px;font-size:13px;font-weight:600;cursor:pointer;color:#1a202c;">👍 ${a.likes}</button>
+          <button onclick="showToast('🔖 Artigo salvo')" style="background:#f0f4f8;border:1px solid #e2e8f0;border-radius:20px;padding:6px 14px;font-size:13px;cursor:pointer;">🔖</button>
+        </div>
+      </div>
+
+      <!-- Hero image -->
+      <img src="${a.img}" alt="${a.title}" style="width:100%;height:300px;object-fit:cover;border-radius:10px;margin-bottom:28px;display:block;">
+
+      <!-- Article body -->
+      <div style="margin-bottom:36px;">${bodyHtml}</div>
+
+      <!-- ─────── SHARE SECTION ─────── -->
+      <div style="background:linear-gradient(135deg,#0d1f2d 0%,#152a3d 100%);border-radius:14px;padding:28px 24px;margin-bottom:36px;">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.4);margin-bottom:6px;">Compartilhe este texto</div>
+        <div style="font-size:20px;font-weight:800;color:#fff;margin-bottom:6px;">Gostou da análise? Passe adiante.</div>
+        <div style="font-size:13px;color:rgba(255,255,255,.55);margin-bottom:20px;line-height:1.5;">Ao compartilhar, você amplifica a voz de <strong style="color:rgba(255,255,255,.8);">${a.author}</strong> e traz novos leitores para a BrazilEconomy — é assim que analistas independentes ganham visibilidade.</div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;">
+          <button onclick="window.open('${xUrl}','_blank')" style="flex:1;min-width:110px;background:#000;border:none;border-radius:8px;padding:12px 16px;color:#fff;font-size:13px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:opacity .15s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.265 5.632 5.9-5.632Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            Compartilhar no X
+          </button>
+          <button onclick="window.open('${fbUrl}','_blank')" style="flex:1;min-width:110px;background:#1877F2;border:none;border-radius:8px;padding:12px 16px;color:#fff;font-size:13px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:opacity .15s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            Facebook
+          </button>
+          <button onclick="window.open('${liUrl}','_blank')" style="flex:1;min-width:110px;background:#0A66C2;border:none;border-radius:8px;padding:12px 16px;color:#fff;font-size:13px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:opacity .15s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </button>
+          <button onclick="window.open('${waUrl}','_blank')" style="flex:1;min-width:110px;background:#25D366;border:none;border-radius:8px;padding:12px 16px;color:#fff;font-size:13px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:opacity .15s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+            WhatsApp
+          </button>
+        </div>
+        <button onclick="navigator.clipboard&&navigator.clipboard.writeText('${a.shareUrl}').then(()=>showToast('🔗 Link copiado!'))" style="width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:10px;color:rgba(255,255,255,.6);font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;">
+          🔗 Copiar link do artigo
+        </button>
+      </div>
+
+      <!-- Author bio card -->
+      <div style="background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:20px;margin-bottom:24px;">
+        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#718096;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid #e2e8f0;">Sobre a autora</div>
+        <div style="display:flex;gap:14px;align-items:flex-start;">
+          <img src="${authorPhoto.replace('/150?','/300?')}" alt="${a.author}" style="width:64px;height:64px;border-radius:50%;object-fit:cover;object-position:top;flex-shrink:0;border:2px solid #e2e8f0;">
+          <div style="flex:1;">
+            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:4px;">
+              <span style="font-size:16px;font-weight:800;color:#1a202c;">${a.author}</span>
+              <span style="background:#1e6db5;color:#fff;font-size:9px;font-weight:800;padding:2px 8px;border-radius:3px;letter-spacing:.04em;">N3 · REPÓRTER</span>
+              <span style="font-family:monospace;font-size:11px;font-weight:700;color:#718096;background:#f0f4f8;padding:2px 8px;border-radius:3px;">${authorP.kodeId||'BE-30012'}</span>
+            </div>
+            <div style="font-size:12px;color:#4a5568;line-height:1.55;margin-bottom:12px;">Repórter credenciada pela BrazilEconomy com especialização em ${(authorP.verticals||['Agronegócio']).join(' e ')}. Membro da plataforma desde ${authorP.since||'2024'} com ${authorP.textos||47} textos publicados.</div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+              <button onclick="viewAuthorKodeId('${a.author}')" style="background:#1e6db5;border:none;border-radius:6px;padding:7px 16px;color:#fff;font-size:12px;font-weight:700;cursor:pointer;">Ver todos os textos →</button>
+              <button onclick="showPopover(event,'${authorP.kodeId||'BE-30012'}','${a.author}','L3 · ${authorP.role||'Repórter'}','av-blue','${authorP.initials||'MS'}',${JSON.stringify(authorP.verticals||['Agronegócio'])},${authorP.textos||47},${authorP.comentarios||312},'${authorP.since||'Mar 2024'}')" style="background:none;border:1px solid #e2e8f0;border-radius:6px;padding:7px 16px;color:#4a5568;font-size:12px;font-weight:600;cursor:pointer;">Kodes-ID ↗</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Member-get-member CTA -->
+      <div style="background:linear-gradient(135deg,#004d26 0%,#00703c 100%);border-radius:14px;padding:24px;margin-bottom:32px;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:-20px;right:-20px;font-size:80px;opacity:.06;">🌱</div>
+        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.5);margin-bottom:6px;">Novo na BrazilEconomy?</div>
+        <div style="font-size:19px;font-weight:800;color:#fff;line-height:1.25;margin-bottom:8px;">Junte-se a quem analisa, escreve e debate o Brasil.</div>
+        <div style="font-size:13px;color:rgba(255,255,255,.65);line-height:1.55;margin-bottom:20px;">Crie sua conta gratuita, obtenha seu Kodes-ID Nível 1 e comece a comentar artigos como este. Se você escreve sobre economia, pode chegar ao N3 e publicar suas próprias análises — com credencial verificada.</div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <button onclick="goScreen(3)" style="background:#fff;border:none;border-radius:8px;padding:11px 22px;color:#00703c;font-size:13px;font-weight:800;cursor:pointer;">Criar minha conta grátis →</button>
+          <button onclick="showToast('📤 Link de convite copiado!')" style="background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:8px;padding:11px 22px;color:#fff;font-size:13px;font-weight:700;cursor:pointer;">📤 Indicar um amigo</button>
+        </div>
+      </div>
+
+      <!-- Related articles -->
+      <div>
+        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#718096;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid #e2e8f0;">Leia também</div>
+        ${relatedHtml}
+      </div>
+
+    </div><!-- end article wrapper -->
+  `;
+
+  document.getElementById('screen-article').style.display = 'block';
+  window.scrollTo({top:0, behavior:'smooth'});
+  closePopover();
+}
+
+function closeArticleScreen() {
+  document.getElementById('screen-article').style.display = 'none';
+  document.querySelectorAll('.screen').forEach((s,i) => {
+    s.classList.toggle('active', i === (window._prevScreen||0));
+  });
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
 // ── Navigation ──
 function goScreen(n) {
   document.querySelectorAll('.screen').forEach((s,i) => s.classList.toggle('active', i===n));
@@ -1799,8 +1995,9 @@ function goScreen(n) {
     if(i < n) d.classList.add('done');
     if(i === n) d.classList.add('active');
   });
-  // if navigating away from author screen, make sure it's hidden
+  // if navigating away from author/article screens, make sure they're hidden
   document.getElementById('screen-author').style.display = 'none';
+  document.getElementById('screen-article').style.display = 'none';
   currentScreen = n;
   updateHeader();
   window.scrollTo({top:0, behavior:'smooth'});
@@ -2143,6 +2340,7 @@ function viewAuthorKodeId(name) {
 
 function closeAuthorScreen() {
   document.getElementById('screen-author').style.display = 'none';
+  document.getElementById('screen-article').style.display = 'none';
   document.querySelectorAll('.screen').forEach((s,i) => {
     s.classList.toggle('active', i === (window._prevScreen||0));
   });
